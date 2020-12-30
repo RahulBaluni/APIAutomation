@@ -8,11 +8,9 @@ public class Requests {
 
     Headers headers=new Headers();
 
-    public Response getRequest(){
+    public Response getRequest(String endpoint){
 
-        return given().headers(headers.getHeaders()).get();
-
+        System.out.println("I am inside get request method");
+        return given().headers(headers.getHeaders()).get(endpoint);
     }
-
-
 }
