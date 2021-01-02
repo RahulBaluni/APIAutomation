@@ -7,7 +7,7 @@ public class Headers {
 
     public HashMap<String, String> getHeaders(){
 
-        headersMap.put("content-type", "application/jason");
+        headersMap.put("content-type", "application/json");
         return headersMap;
     }
 }

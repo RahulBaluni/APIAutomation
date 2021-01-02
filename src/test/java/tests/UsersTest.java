@@ -33,4 +33,10 @@ public class UsersTest {
                 .whenIRetrieveUsers()
                 .thenIVerifyUsers();
     }
+
+    @Test
+    public void createUserTest() {
+        userssteps
+                .whenICreateUser("Anmol", "QA Automation");
+    }
 }

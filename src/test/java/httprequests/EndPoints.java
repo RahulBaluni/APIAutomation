@@ -9,4 +9,8 @@ public class EndPoints {
     public static String getUsersEndpoint() {
         return endpoints.get("baseurl") + endpoints.get("getUsers");
     }
+
+    public static String createUsersEndpoint() {
+        return endpoints.get("baseurl") + endpoints.get("createUsers");
+    }
 }

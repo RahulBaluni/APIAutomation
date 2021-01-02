@@ -13,4 +13,13 @@ public class Requests {
         System.out.println("I am inside get request method");
         return given().headers(headers.getHeaders()).get(endpoint);
     }
+
+    public Response postRequest(String endpoint, String body){
+
+        System.out.println("I am inside post request method");
+        return given()
+                .headers(headers.getHeaders())
+                .body(body)
+                .post(endpoint);
+    }
 }
