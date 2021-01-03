@@ -11,7 +11,10 @@ public class Requests {
     public Response getRequest(String endpoint){
 
         System.out.println("I am inside get request method");
-        return given().headers(headers.getHeaders()).get(endpoint);
+        return given().log().all()
+                .headers(headers.getHeaders())
+                .get(endpoint);
+
     }
 
     public Response postRequest(String endpoint, String body){
