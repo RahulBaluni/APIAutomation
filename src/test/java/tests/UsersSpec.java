@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UsersTest {
+public class UsersSpec {
     UsersSteps userssteps = new UsersSteps();
     FileUtils fileUtils = new FileUtils();
 
@@ -32,5 +32,15 @@ public class UsersTest {
         userssteps
                 .whenIRetrieveUsers()
                 .thenIVerifyUsers();
+    }
+    @Test
+    public void createUserTest() {
+        userssteps
+                .whenICreateUser("Rocky", "Killer");
+    }
+    @Test
+    public void updateUserTest() {
+        userssteps
+                .whenIUpdateUser("Rocky", "KillerAF");
     }
 }
