@@ -14,7 +14,6 @@ public class Requests {
         return given().log().all()
                 .headers(headers.getHeaders())
                 .get(endpoint);
-
     }
 
     public Response postRequest(String endpoint, String body){
@@ -24,5 +23,15 @@ public class Requests {
                 .headers(headers.getHeaders())
                 .body(body)
                 .post(endpoint);
+    }
+
+    public Response patchRequest(String endpoint, String body){
+        System.out.println("I am inside update request method");
+        return given()
+                .log().all()
+                .headers(headers.getHeaders())
+                .body(body)
+                .when()
+                .patch(endpoint);
     }
 }

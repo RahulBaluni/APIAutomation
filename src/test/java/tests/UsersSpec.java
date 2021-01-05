@@ -35,7 +35,11 @@ public class UsersSpec {
                 .whenIRetrieveUsers()
                 .thenIVerifyUsers();
     }
-
+    @Test
+    public void updateUserTest() {
+        userssteps
+                .whenIUpdateUser("Rocky", "KillerAF");
+    }
     @Test
     @Tag("create_users")
     public void createUserTest() {
