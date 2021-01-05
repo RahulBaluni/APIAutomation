@@ -1,10 +1,13 @@
 package steps;
 
+import dto.GetUsersResponse;
 import httprequests.EndPoints;
 import httprequests.Requests;
 import io.restassured.response.Response;
+import providers.UsersDetails;
 import requestbody.BodyBuilder;
 import utils.FileUtils;
+import org.junit.jupiter.api.Assertions;
 
 public class UsersSteps {
 
@@ -12,9 +15,11 @@ public class UsersSteps {
     FileUtils fileUtils = new FileUtils();
     BodyBuilder bodybuilder = new BodyBuilder();
     Response response;
+    UsersDetails usersDetails = new UsersDetails();
     public UsersSteps whenIRetrieveUsers(){
         System.out.println("I am in whenIRetrieveUsers method");
         response = requests.getRequest(EndPoints.getUsersEndpoint());
+        usersDetails.setGetUsersResponse(response);
         System.out.println(response.statusCode());
         System.out.println(response.asString());
         return this;
@@ -23,6 +28,10 @@ public class UsersSteps {
 
     public UsersSteps thenIVerifyUsers(){
         System.out.println("I am in thenIVerifyUsers method");
+        System.out.println(usersDetails.getPage());
+        System.out.println(usersDetails.getEmail());
+        Assertions.assertEquals("emma.wong@reqres.com", usersDetails.getEmail(), "Email dosen't match");
+        System.out.println(usersDetails.getSupportText());
         return this;
     }
 

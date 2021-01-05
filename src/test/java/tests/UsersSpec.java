@@ -2,6 +2,7 @@ package tests;
 
 import httprequests.EndPoints;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import steps.UsersSteps;
@@ -28,19 +29,21 @@ public class UsersSpec {
     }
 
     @Test
+    @Tag("get_users")
     public void getUsersTest() {
         userssteps
                 .whenIRetrieveUsers()
                 .thenIVerifyUsers();
     }
     @Test
-    public void createUserTest() {
-        userssteps
-                .whenICreateUser("Rocky", "Killer");
-    }
-    @Test
     public void updateUserTest() {
         userssteps
                 .whenIUpdateUser("Rocky", "KillerAF");
+    }
+    @Test
+    @Tag("create_users")
+    public void createUserTest() {
+        userssteps
+                .whenICreateUser("Anmol", "QA Automation");
     }
 }

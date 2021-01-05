@@ -11,19 +11,20 @@ public class Requests {
     public Response getRequest(String endpoint){
 
         System.out.println("I am inside get request method");
-        return given()
+        return given().log().all()
                 .headers(headers.getHeaders())
                 .get(endpoint);
     }
 
     public Response postRequest(String endpoint, String body){
 
-        System.out.println("I am inside create request method");
+        System.out.println("I am inside post request method");
         return given()
                 .headers(headers.getHeaders())
                 .body(body)
                 .post(endpoint);
     }
+
     public Response patchRequest(String endpoint, String body){
         System.out.println("I am inside update request method");
         return given()
