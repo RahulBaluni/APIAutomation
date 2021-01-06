@@ -1,11 +1,7 @@
-package dto;
+package dto.getusers;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
-
 
 @lombok.Data
 @AllArgsConstructor
@@ -14,9 +10,7 @@ public class Data {
 
     private Long id;
     private String email;
-    private String firstName;
-    private String lastName;
+    private String first_name;
+    private String last_name;
     private String avatar;
-
-
 }

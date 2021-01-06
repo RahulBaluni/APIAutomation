@@ -1,7 +1,7 @@
 package providers;
 
 
-import dto.GetUsersResponse;
+import dto.getusers.GetUsersResponse;
 import io.restassured.response.Response;
 
 public class UsersDetails {

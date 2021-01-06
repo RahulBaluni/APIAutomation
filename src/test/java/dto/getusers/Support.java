@@ -1,4 +1,4 @@
-package dto;
+package dto.getusers;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
