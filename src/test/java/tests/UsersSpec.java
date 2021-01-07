@@ -14,21 +14,9 @@ import java.util.Properties;
 
 @Feature("Users List Portal")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UsersSpec {
+public class UsersSpec extends BaseSpec{
+
     UsersSteps userssteps = new UsersSteps();
-    FileUtils fileUtils = new FileUtils();
-
-    @BeforeAll
-    public void setup() throws IOException {
-        configureEndpoints();
-        System.out.println(" I am inside setup function");
-        System.out.println(EndPoints.getUsersEndpoint());
-    }
-
-    private void configureEndpoints() throws IOException {
-        Properties properties = fileUtils.readPropertiesFile("endpoints.properties");
-        EndPoints.endpoints = fileUtils.loadPropertiesFileInHashMap(properties);
-    }
 
     @Test
     @Tag("get_users")
@@ -36,20 +24,18 @@ public class UsersSpec {
     @DisplayName("Get API Test")
     @Severity(SeverityLevel.CRITICAL)
     public void getUsersTest() {
-        userssteps
-                .whenIRetrieveUsers()
-                .thenIVerifyUsers();
+        userssteps.whenIRetrieveUsers().thenIVerifyUsers();
     }
+
     @Test
     @Tag("update_users")
     public void updateUserTest() {
-        userssteps
-                .whenIUpdateUser("Rocky", "KillerAF");
+        userssteps.whenIUpdateUser("Rocky", "KillerAF");
     }
+
     @Test
     @Tag("create_users")
     public void createUserTest() {
-        userssteps
-                .whenICreateUser("Anmol", "QA Automation");
+        userssteps.whenICreateUser("Anmol", "QA Automation");
     }
 }
