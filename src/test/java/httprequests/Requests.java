@@ -34,6 +34,9 @@ public class Requests {
 
         System.out.println("I am inside post request method");
         return given()
+                .log()
+                .all()
+                .filter(new RequestLoggingFilter(getRequestLogger()))
                 .headers(headers.getHeaders())
                 .body(body)
                 .post(endpoint);
@@ -47,5 +50,15 @@ public class Requests {
                 .body(body)
                 .when()
                 .patch(endpoint);
+    }
+
+    public Response deleteRequest(String endpoint){
+        System.out.println("I am inside delete request method");
+        return given()
+                .log()
+                .all()
+                .urlEncodingEnabled(false)
+                .headers(headers.getHeaders())
+                .delete(endpoint);
     }
 }

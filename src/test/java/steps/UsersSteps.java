@@ -21,7 +21,7 @@ public class UsersSteps extends BaseSteps{
 
     @Step
     public UsersSteps thenIVerifyUsers(){
-        Assertions.assertEquals("emma.wong@reqres.com", usersDetails.getEmail(), "Email doesn't match");
+        Assertions.assertEquals("emma.wong@reqres.in", usersDetails.getEmail(), "Email doesn't match");
         return this;
     }
 
@@ -35,7 +35,35 @@ public class UsersSteps extends BaseSteps{
     @Step
     public UsersSteps whenIUpdateUser(String name, String job){
         response = requests.patchRequest(EndPoints.updateUsersEndpoint(), bodybuilder.getUpdateUserBody(name, job));
-        validateAndAttachResponse("updateUsers", 201);
+        validateAndAttachResponse("updateUsers", 200);
+        return this;
+    }
+
+    @Step
+    public UsersSteps whenIDeleteUser(String id, String name){
+        response = requests.deleteRequest(EndPoints.deleteUsersEndpoint(id, name));
+        validateAndAttachResponse("deleteUsers", 204);
+        return this;
+    }
+
+    @Step
+    public UsersSteps whenIRegisterUser(String email, String password){
+        response = requests.postRequest(EndPoints.registerUsersEndpoint(), bodybuilder.getRegisterUserBody(email, password));
+        validateAndAttachResponse("registerUser", 200);
+        return this;
+    }
+
+//    @Step
+//    public UsersSteps whenIRegisterUsers(String email, String password){
+//        response = requests.registerUserRequest(EndPoints.registerUsersEndpoint(), bodybuilder.getRegisterUserBody(email, password));
+//        validateAndAttachResponse("registerUsers", 200);
+//        return this;
+//    }
+
+    @Step
+    public UsersSteps whenUserLogin(String email, String password){
+        response = requests.postRequest(EndPoints.loginUserEndpoint(), bodybuilder.getLoginUserBody(email, password));
+        validateAndAttachResponse("loginUser", 200);
         return this;
     }
 

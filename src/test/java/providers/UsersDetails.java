@@ -1,13 +1,15 @@
 package providers;
 
-
-import dto.getusers.Data;
 import dto.getusers.GetUsersResponse;
+import dto.loginuser.LoginUserResponse;
+import dto.registeruser.RegisterUserResponse;
 import io.restassured.response.Response;
 
 public class UsersDetails {
 
     private GetUsersResponse getUsersResponse;
+    private RegisterUserResponse registerUserResponse;
+    private LoginUserResponse loginUserResponse;
 
     public Integer getPage(){
         return getUsersResponse.getPage();
@@ -28,5 +30,11 @@ public class UsersDetails {
         getUsersResponse = response.getBody().as(GetUsersResponse.class);
     }
 
+    public void setRegisterUserResponse(Response response){
+        registerUserResponse = response.getBody().as(RegisterUserResponse.class);
+    }
 
+    public void setLoginUserResponse(Response response){
+        loginUserResponse = response.getBody().as(LoginUserResponse.class);
+    }
 }

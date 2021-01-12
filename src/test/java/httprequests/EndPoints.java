@@ -22,4 +22,22 @@ public class EndPoints {
                 .get("baseurl") + endpoints
                 .get("updateUser");
     }
+
+    public static String deleteUsersEndpoint(String id, String name) {
+        return String.format(endpoints
+                .get("baseurl") + endpoints
+                .get("deleteUser"),id, name);
+    }
+
+    public static String registerUsersEndpoint() {
+        return endpoints
+                .get("baseurl") + endpoints
+                .get("registerUser");
+    }
+
+    public static String loginUserEndpoint() {
+        return endpoints
+                .get("baseurl") + endpoints
+                .get("loginUser");
+    }
 }

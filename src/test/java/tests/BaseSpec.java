@@ -14,7 +14,6 @@ public class BaseSpec {
     public void setup() throws IOException {
         configureEndpoints();
         System.out.println(" I am inside setup function");
-        System.out.println(EndPoints.getUsersEndpoint());
     }
 
     private void configureEndpoints() throws IOException {
