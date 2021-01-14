@@ -22,19 +22,25 @@ public class UsersSpec extends BaseSpec{
     @DisplayName("Get API Test")
     @Severity(SeverityLevel.CRITICAL)
     public void getUsersTest() {
-        userssteps.whenIRetrieveUsers().thenIVerifyUsers();
+
+        userssteps
+                .whenIRetrieveUsers()
+                .thenIVerifyUsers();
     }
 
     @Test
     @Tag("update_users")
     public void updateUserTest() {
-        userssteps.whenIUpdateUser("Rocky", "KillerAF");
+        userssteps
+                .whenIUpdateUser("Rocky", "KillerAF");
     }
 
     @Test
     @Tag("create_users")
     public void createUserTest() {
-        userssteps.whenICreateUser("Anmol", "QA Automation");
+
+        userssteps
+                .whenICreateUser("Anmol", "QA Automation");
     }
 
     @Test
@@ -48,30 +54,37 @@ public class UsersSpec extends BaseSpec{
     @Test
     @Tag("register_users")
     public void registerUserTest() {
-        userssteps.whenIRegisterUser("eve.holt@reqres.in","pistol");
+
+        userssteps
+                .whenIRegisterUser("eve.holt@reqres.in","pistol");
     }
 
     @Test
     @Tag("unsuccessful_register_users")
     public void unsuccessfulRegisterUserTest() {
-        userssteps.whenUserRegistrationUnsuccessful("sydney@fife");
+
+        userssteps
+                .whenUserRegistrationUnsuccessful("sydney@fife");
     }
 
     @Test
     @Tag("login_users")
     public void loginUserTest() {
-        userssteps.whenUserLogin("eve.holt@reqres.in","cityslicka");
+        userssteps
+                .whenUserLogin("eve.holt@reqres.in","cityslicka");
     }
 
     @Test
     @Tag("Unsuccessful_login_users")
     public void unsuccessfulLoginUserTest() {
-        userssteps.whenUserLoginUnsuccessful("peter@klaven");
+        userssteps
+                .whenUserLoginUnsuccessful("peter@klaven");
     }
 
     @Test
     @Tag("Update_users_AsPut")
     public void updateUserPutTest() {
-        userssteps.whenUpdateUserAsPut("morpheus","zion residents");
+        userssteps
+                .whenUpdateUserAsPut("morpheus","zion residents");
     }
 }
