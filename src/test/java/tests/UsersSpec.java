@@ -52,8 +52,26 @@ public class UsersSpec extends BaseSpec{
     }
 
     @Test
+    @Tag("unsuccessful_register_users")
+    public void unsuccessfulRegisterUserTest() {
+        userssteps.whenUserRegistrationUnsuccessful("sydney@fife");
+    }
+
+    @Test
     @Tag("login_users")
     public void loginUserTest() {
         userssteps.whenUserLogin("eve.holt@reqres.in","cityslicka");
+    }
+
+    @Test
+    @Tag("Unsuccessful_login_users")
+    public void unsuccessfulLoginUserTest() {
+        userssteps.whenUserLoginUnsuccessful("peter@klaven");
+    }
+
+    @Test
+    @Tag("Update_users_AsPut")
+    public void updateUserPutTest() {
+        userssteps.whenUpdateUserAsPut("morpheus","zion residents");
     }
 }

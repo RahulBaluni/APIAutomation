@@ -5,9 +5,6 @@ import lombok.Setter;
 
 @Setter
 @Builder(toBuilder = true)
-public class CreateUserPayload {
-
-    private String name;
-    private String job;
-
+public class UnsuccessfulRegisterUserPayload {
+    private String email;
 }

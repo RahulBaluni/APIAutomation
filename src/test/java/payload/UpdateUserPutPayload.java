@@ -5,9 +5,8 @@ import lombok.Setter;
 
 @Setter
 @Builder(toBuilder = true)
-public class CreateUserPayload {
+public class UpdateUserPutPayload {
 
     private String name;
     private String job;
-
 }

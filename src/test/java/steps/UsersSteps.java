@@ -53,13 +53,6 @@ public class UsersSteps extends BaseSteps{
         return this;
     }
 
-//    @Step
-//    public UsersSteps whenIRegisterUsers(String email, String password){
-//        response = requests.registerUserRequest(EndPoints.registerUsersEndpoint(), bodybuilder.getRegisterUserBody(email, password));
-//        validateAndAttachResponse("registerUsers", 200);
-//        return this;
-//    }
-
     @Step
     public UsersSteps whenUserLogin(String email, String password){
         response = requests.postRequest(EndPoints.loginUserEndpoint(), bodybuilder.getLoginUserBody(email, password));
@@ -67,4 +60,25 @@ public class UsersSteps extends BaseSteps{
         return this;
     }
 
+    @Step
+    public UsersSteps whenUserLoginUnsuccessful(String email){
+        response = requests.postRequest(EndPoints.unsuccessfullRegisterUserEndpoint(), bodybuilder.getUnsuccessfulLoginUserBody(email));
+        validateAndAttachResponse("unsuccessfulLogin", 400);
+        return this;
+    }
+
+    @Step
+    public UsersSteps whenUserRegistrationUnsuccessful(String email){
+        response = requests.postRequest(EndPoints.unsuccessfullRegisterUserEndpoint(), bodybuilder.getUnsuccessfulRegisterUserBody(email));
+        validateAndAttachResponse("registerUserUnsuccessful", 400);
+        return this;
+    }
+
+    @Step
+    public UsersSteps whenUpdateUserAsPut(String name, String job){
+        response = requests.putRequest(EndPoints.updatePutUserEndpoint(),bodybuilder.getUpdateUserPutBody(name, job));
+        validateAndAttachResponse("updatePutUser", 200);
+        usersDetails.setGetUsersResponse(response);
+        return this;
+    }
 }

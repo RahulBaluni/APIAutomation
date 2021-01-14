@@ -45,7 +45,8 @@ public class Requests {
     public Response patchRequest(String endpoint, String body){
         System.out.println("I am inside update request method");
         return given()
-                .log().all()
+                .log()
+                .all()
                 .headers(headers.getHeaders())
                 .body(body)
                 .when()
@@ -60,5 +61,16 @@ public class Requests {
                 .urlEncodingEnabled(false)
                 .headers(headers.getHeaders())
                 .delete(endpoint);
+    }
+
+    public Response putRequest(String endpoint, String body){
+        System.out.println("I am inside put request method");
+        return given()
+                .log()
+                .all()
+                .urlEncodingEnabled(false)
+                .headers(headers.getHeaders())
+                .body(body)
+                .put(endpoint);
     }
 }

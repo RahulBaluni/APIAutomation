@@ -40,4 +40,22 @@ public class EndPoints {
                 .get("baseurl") + endpoints
                 .get("loginUser");
     }
+
+    public static String unsuccessfulLoginUserEndpoint() {
+        return endpoints
+                .get("baseurl") + endpoints
+                .get("unsuccessfulLogin");
+    }
+
+    public static String unsuccessfullRegisterUserEndpoint() {
+        return endpoints
+                .get("baseurl") + endpoints
+                .get("registerUserUnsuccessful");
+    }
+
+    public static String updatePutUserEndpoint() {
+        return endpoints
+                .get("baseurl") + endpoints
+                .get("updatePutUser");
+    }
 }
