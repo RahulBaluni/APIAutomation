@@ -1,11 +1,12 @@
-package payload;
+package payload.updateuserpayload;
 
 import lombok.Builder;
 import lombok.Setter;
 
 @Setter
 @Builder(toBuilder = true)
-public class UpdateUserPayload {
+public class UpdateUserPutPayload {
+
     private String name;
     private String job;
 }

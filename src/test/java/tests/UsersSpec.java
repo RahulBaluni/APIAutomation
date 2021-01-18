@@ -102,4 +102,12 @@ public class UsersSpec extends BaseSpec{
         userssteps
                 .whenICreateUserDraft();
     }
+
+    @Test
+    @Tag("Gmail_Users_Messages_Send")
+    public void gmailUsersMessagesSendTest(){
+
+        userssteps
+                .whenISendGmailUsersMessages();
+    }
 }

@@ -1,4 +1,4 @@
-package payload;
+package payload.createdraftuserpayload;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

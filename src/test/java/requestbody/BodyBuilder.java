@@ -1,7 +1,18 @@
 package requestbody;
 
 import com.google.gson.Gson;
-import payload.*;
+import payload.createdraftuserpayload.CreateDraftUserPayload;
+import payload.createdraftuserpayload.Message;
+import payload.createdraftuserpayload.Payload;
+import payload.createuserpayload.CreateUserPayload;
+import payload.gmailusersmessagessendpayload.Body;
+import payload.gmailusersmessagessendpayload.GmailUsersMessagesSendPayload;
+import payload.loginuserpayload.LoginUserPayload;
+import payload.registeruserpayload.RegisterUserPayload;
+import payload.unsuccessfulloginuserpayload.UnsuccessfulLoginUserPayload;
+import payload.unsuccessfulregisteruserpayload.UnsuccessfulRegisterUserPayload;
+import payload.updateuserpayload.UpdateUserPayload;
+import payload.updateuserpayload.UpdateUserPutPayload;
 
 public class BodyBuilder {
 
@@ -85,5 +96,33 @@ public class BodyBuilder {
                                 .build())
                         .build());
 
+    }
+
+    public String getGmailUsersMessagesSendBody(){
+        return new Gson()
+                .toJson(new GmailUsersMessagesSendPayload()
+                        .toBuilder()
+                        .id("4")
+                        .historyId("4.1")
+                        .internalDate("1-18-21")
+                        .payload(new payload
+                                .gmailusersmessagessendpayload
+                                .Payload()
+                                .toBuilder()
+                                .body(new Body()
+                                        .toBuilder()
+                                        .attachmentId("1")
+                                        .data("Personal")
+                                        .size(500)
+                                        .build())
+                                .filename("test")
+                                .mimeType("TestType")
+                                .partId("321")
+                                .build())
+                        .raw("12")
+                        .sizeEstimate(100)
+                        .snippet("TDS")
+                        .threadId("101")
+                        .build());
     }
 }

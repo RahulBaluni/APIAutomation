@@ -1,4 +1,4 @@
-package payload;
+package payload.createdraftuserpayload;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +16,4 @@ public class Payload {
     private String mimeType;
     private String partId;
     private List<String> parts;
-
-
 }

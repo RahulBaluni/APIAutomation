@@ -1,12 +1,10 @@
-package payload;
+package payload.unsuccessfulloginuserpayload;
 
 import lombok.Builder;
 import lombok.Setter;
 
 @Setter
 @Builder(toBuilder = true)
-public class RegisterUserPayload {
-
+public class UnsuccessfulLoginUserPayload {
     private String email;
-    private String password;
 }

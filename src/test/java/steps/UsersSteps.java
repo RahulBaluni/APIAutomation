@@ -112,4 +112,11 @@ public class UsersSteps extends BaseSteps{
         validateAndAttachResponse("createUsersDraft", 400);
         return this;
     }
+
+    @Step
+    public UsersSteps whenISendGmailUsersMessages(){
+        response = requests.postRequest(EndPoints.gmailUsersMessagesSendEndpoint(), bodybuilder.getGmailUsersMessagesSendBody());
+        validateAndAttachResponse("gmailUsersMessagesSend", 400);
+        return this;
+    }
 }

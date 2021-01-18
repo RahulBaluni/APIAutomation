@@ -63,4 +63,9 @@ public class EndPoints {
         return endpoints
                 .get("createUsersDraft");
     }
+
+    public static String gmailUsersMessagesSendEndpoint(){
+        return endpoints
+                .get("gmailUsersMessagesSend");
+    }
 }
