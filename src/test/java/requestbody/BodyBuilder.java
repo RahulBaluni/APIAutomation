@@ -12,7 +12,7 @@ public class BodyBuilder {
                         .name(name)
                         .job(job)
                         .build());
-    }
+     }
 
     public String getUpdateUserBody(String name, String job){
         return new Gson()
@@ -60,5 +60,30 @@ public class BodyBuilder {
                         .name(name)
                         .job(job)
                         .build());
+    }
+
+    public String getCreatUserDraftBody(){
+        return new Gson()
+                .toJson(new CreateDraftUserPayload()
+                        .toBuilder()
+                        .id("0")
+                        .message(new Message()
+                                .toBuilder()
+                                .historyId("1")
+                                .id("1.1")
+                                .internalDate("1/18/21")
+                                .payload(new Payload()
+                                        .toBuilder()
+                                        .filename("test")
+                                        .mimeType("MimeType")
+                                        .partId("123")
+                                        .build())
+                                .raw("11")
+                                .sizeEstimate(10)
+                                .snippet("Test")
+                                .threadId("100")
+                                .build())
+                        .build());
+
     }
 }

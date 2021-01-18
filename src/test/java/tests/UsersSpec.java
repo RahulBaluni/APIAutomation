@@ -25,14 +25,21 @@ public class UsersSpec extends BaseSpec{
 
         userssteps
                 .whenIRetrieveUsers()
-                .thenIVerifyUsers();
+                .thenIVerifyUserEmail();
     }
 
     @Test
     @Tag("update_users")
     public void updateUserTest() {
         userssteps
-                .whenIUpdateUser("Rocky", "KillerAF");
+                .whenIUpdateUser("Rocky", "KillerAF").thenIVerifyJob().thenIVerifyName();
+    }
+
+    @Test
+    @Tag("created_users")
+    public void createUserNameTest() {
+        userssteps
+                .whenIUpdateUser("Anmol", "QA Automation").thenIVerifyCreatedName().thenIVerifyCreatedJob();
     }
 
     @Test
@@ -86,5 +93,13 @@ public class UsersSpec extends BaseSpec{
     public void updateUserPutTest() {
         userssteps
                 .whenUpdateUserAsPut("morpheus","zion residents");
+    }
+
+    @Test
+    @Tag("CreateUserDraft")
+    public void createUserDraftTest() {
+
+        userssteps
+                .whenICreateUserDraft();
     }
 }

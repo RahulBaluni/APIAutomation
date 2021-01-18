@@ -1,4 +1,4 @@
-package dto.putupdateuser;
+package dto.createuser;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -6,8 +6,9 @@ import lombok.NoArgsConstructor;
 @lombok.Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PutUpdateUserResponse {
+public class CreateUserResponse {
     private String name;
     private String job;
-    private String updatedAt;
+    private String id;
+    private String createdAt;
 }

@@ -58,4 +58,9 @@ public class EndPoints {
                 .get("baseurl") + endpoints
                 .get("updatePutUser");
     }
+
+    public static String createUsersDraftEndpoint() {
+        return endpoints
+                .get("createUsersDraft");
+    }
 }

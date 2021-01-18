@@ -68,6 +68,7 @@ public class Requests {
         return given()
                 .log()
                 .all()
+                .filter(new RequestLoggingFilter(getRequestLogger()))
                 .urlEncodingEnabled(false)
                 .headers(headers.getHeaders())
                 .body(body)

@@ -20,7 +20,7 @@ public class UsersSteps extends BaseSteps{
     }
 
     @Step
-    public UsersSteps thenIVerifyUsers(){
+    public UsersSteps thenIVerifyUserEmail(){
         Assertions.assertEquals("emma.wong@reqres.in", usersDetails.getEmail(), "Email doesn't match");
         return this;
     }
@@ -36,6 +36,30 @@ public class UsersSteps extends BaseSteps{
     public UsersSteps whenIUpdateUser(String name, String job){
         response = requests.patchRequest(EndPoints.updateUsersEndpoint(), bodybuilder.getUpdateUserBody(name, job));
         validateAndAttachResponse("updateUsers", 200);
+        return this;
+    }
+
+    @Step
+    public UsersSteps thenIVerifyJob(){
+        Assertions.assertEquals("KillerAF",usersDetails.getJob(),"Job doesn't match");
+        return this;
+    }
+
+    @Step
+    public UsersSteps thenIVerifyName(){
+        Assertions.assertEquals("KillerAF",usersDetails.getUserName(),"Name doesn't match");
+        return this;
+    }
+
+    @Step
+    public UsersSteps thenIVerifyCreatedJob(){
+        Assertions.assertEquals("QA Automation",usersDetails.getCreatedJob(),"Job doesn't match");
+        return this;
+    }
+
+    @Step
+    public UsersSteps thenIVerifyCreatedName(){
+        Assertions.assertEquals("Anmol",usersDetails.getCreatedName(),"Name doesn't match");
         return this;
     }
 
@@ -78,7 +102,14 @@ public class UsersSteps extends BaseSteps{
     public UsersSteps whenUpdateUserAsPut(String name, String job){
         response = requests.putRequest(EndPoints.updatePutUserEndpoint(),bodybuilder.getUpdateUserPutBody(name, job));
         validateAndAttachResponse("updatePutUser", 200);
-        usersDetails.setGetUsersResponse(response);
+        usersDetails.getUpdatedUserResponse(response);
+        return this;
+    }
+
+    @Step
+    public UsersSteps whenICreateUserDraft(){
+        response = requests.postRequest(EndPoints.createUsersDraftEndpoint(), bodybuilder.getCreatUserDraftBody());
+        validateAndAttachResponse("createUsersDraft", 400);
         return this;
     }
 }
