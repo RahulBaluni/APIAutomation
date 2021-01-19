@@ -1,9 +1,10 @@
 package requestbody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import org.json.simple.parser.ParseException;
 import payload.createdraftuserpayload.CreateDraftUserPayload;
 import payload.createdraftuserpayload.Message;
-import payload.createdraftuserpayload.Payload;
 import payload.createuserpayload.CreateUserPayload;
 import payload.gmailusersmessagessendpayload.Body;
 import payload.gmailusersmessagessendpayload.GmailUsersMessagesSendPayload;
@@ -13,8 +14,14 @@ import payload.unsuccessfulloginuserpayload.UnsuccessfulLoginUserPayload;
 import payload.unsuccessfulregisteruserpayload.UnsuccessfulRegisterUserPayload;
 import payload.updateuserpayload.UpdateUserPayload;
 import payload.updateuserpayload.UpdateUserPutPayload;
+import utils.FileUtils;
+
+import java.io.IOException;
+import java.util.Arrays;
 
 public class BodyBuilder {
+
+    FileUtils fileUtils = new FileUtils();
 
     public String getCreateUserBody(String name, String job){
         return new Gson()
@@ -73,38 +80,48 @@ public class BodyBuilder {
                         .build());
     }
 
-    public String getCreatUserDraftBody(){
-        return new Gson()
-                .toJson(new CreateDraftUserPayload()
-                        .toBuilder()
-                        .id("0")
-                        .message(new Message()
-                                .toBuilder()
-                                .historyId("1")
-                                .id("1.1")
-                                .internalDate("1/18/21")
-                                .payload(new Payload()
-                                        .toBuilder()
-                                        .filename("test")
-                                        .mimeType("MimeType")
-                                        .partId("123")
-                                        .build())
-                                .raw("11")
-                                .sizeEstimate(10)
-                                .snippet("Test")
-                                .threadId("100")
-                                .build())
-                        .build());
+//    public String getCreatUserDraftBody(){
+//        return new Gson()
+//                .toJson(new CreateDraftUserPayload()
+//                        .toBuilder()
+//                        .id("0")
+//                        .message(new Message()
+//                                .toBuilder()
+//                                .historyId("1")
+//                                .id("1.1")
+//                                .internalDate("1/18/21")
+//                                .payload(new Payload()
+//                                        .toBuilder()
+//                                        .filename("test")
+//                                        .mimeType("MimeType")
+//                                        .partId("123")
+//                                        .build())
+//                                .raw("11")
+//                                .sizeEstimate(10)
+//                                .snippet("Test")
+//                                .threadId("100")
+//                                .build())
+//                        .build());
+//
+//    }
 
+    public String getCreatUserDraftBody() throws IOException, ParseException {
+        String createUserDraft = fileUtils.readJsonFileAsJsonObject();
+        ObjectMapper objectMapper = new ObjectMapper();
+        CreateDraftUserPayload object = objectMapper.readValue(createUserDraft, CreateDraftUserPayload.class);
+        return object.toBuilder().message(new Message().toBuilder().internalDate("1/19/21").build()).build().toString();
     }
 
     public String getGmailUsersMessagesSendBody(){
+//        ArrayList lableid= new ArrayList<String>();
+//        lableid.add("a");
+//        lableid.add("b");
         return new Gson()
                 .toJson(new GmailUsersMessagesSendPayload()
                         .toBuilder()
                         .id("4")
                         .historyId("4.1")
-                        .internalDate("1-18-21")
+                        .internalDate("1-18-21").labelIds(Arrays.asList("a","b"))
                         .payload(new payload
                                 .gmailusersmessagessendpayload
                                 .Payload()

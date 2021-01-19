@@ -47,6 +47,7 @@ public class Requests {
         return given()
                 .log()
                 .all()
+                .filter(new RequestLoggingFilter(getRequestLogger()))
                 .headers(headers.getHeaders())
                 .body(body)
                 .when()
@@ -58,6 +59,7 @@ public class Requests {
         return given()
                 .log()
                 .all()
+                .filter(new RequestLoggingFilter(getRequestLogger()))
                 .urlEncodingEnabled(false)
                 .headers(headers.getHeaders())
                 .delete(endpoint);

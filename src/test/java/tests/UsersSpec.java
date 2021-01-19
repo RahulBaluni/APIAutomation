@@ -4,11 +4,14 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import steps.UsersSteps;
+
+import java.io.IOException;
 
 @Feature("Users List Portal")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -44,10 +47,10 @@ public class UsersSpec extends BaseSpec{
 
     @Test
     @Tag("create_users")
-    public void createUserTest() {
+    public void createUserTest() throws IOException, ParseException {
 
         userssteps
-                .whenICreateUser("Anmol", "QA Automation");
+                .whenICreateUser("Anmol", "QA Automation").whenICreateUserDraft();
     }
 
     @Test
@@ -97,7 +100,7 @@ public class UsersSpec extends BaseSpec{
 
     @Test
     @Tag("CreateUserDraft")
-    public void createUserDraftTest() {
+    public void createUserDraftTest() throws IOException, ParseException {
 
         userssteps
                 .whenICreateUserDraft();
@@ -109,5 +112,6 @@ public class UsersSpec extends BaseSpec{
 
         userssteps
                 .whenISendGmailUsersMessages();
+
     }
 }

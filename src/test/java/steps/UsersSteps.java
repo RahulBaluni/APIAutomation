@@ -1,14 +1,19 @@
 package steps;
 
 import httprequests.EndPoints;
+import httprequests.Headers;
 import io.qameta.allure.Step;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import providers.UsersDetails;
 
+import java.io.IOException;
+
 public class UsersSteps extends BaseSteps{
 
     UsersDetails usersDetails = new UsersDetails();
+    Headers header = new Headers();
 
     @Step
     @DisplayName("Step to retrieve Users list")
@@ -27,6 +32,7 @@ public class UsersSteps extends BaseSteps{
 
     @Step
     public UsersSteps whenICreateUser(String name, String job){
+        header.addHeader("header1","value1");
         response = requests.postRequest(EndPoints.createUsersEndpoint(), bodybuilder.getCreateUserBody(name, job));
         validateAndAttachResponse("createUsers", 201);
         return this;
@@ -107,7 +113,10 @@ public class UsersSteps extends BaseSteps{
     }
 
     @Step
-    public UsersSteps whenICreateUserDraft(){
+    public UsersSteps whenICreateUserDraft() throws IOException, ParseException {
+        header.resetHeaders();
+        header.addHeader("AccessToken","awefgwfak");
+        //header.setAccessToken();
         response = requests.postRequest(EndPoints.createUsersDraftEndpoint(), bodybuilder.getCreatUserDraftBody());
         validateAndAttachResponse("createUsersDraft", 400);
         return this;
@@ -115,8 +124,19 @@ public class UsersSteps extends BaseSteps{
 
     @Step
     public UsersSteps whenISendGmailUsersMessages(){
+        header.addHeader("header1","value1");
+        header.setAccessToken();
         response = requests.postRequest(EndPoints.gmailUsersMessagesSendEndpoint(), bodybuilder.getGmailUsersMessagesSendBody());
         validateAndAttachResponse("gmailUsersMessagesSend", 400);
+        return this;
+    }
+
+    @Step
+    public UsersSteps whenICreateUserDraftByJsonFile() throws IOException, ParseException {
+        header.resetHeaders();
+        header.addHeader("AccessToken","awefgwfak");
+        response = requests.postRequest(EndPoints.createUsersDraftEndpoint(), bodybuilder.getCreatUserDraftBody());
+        validateAndAttachResponse("createUsersDraft", 400);
         return this;
     }
 }
