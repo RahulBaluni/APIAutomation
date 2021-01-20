@@ -34,6 +34,9 @@ public class Requests {
 
         System.out.println("I am inside post request method");
         return given()
+                .log()
+                .all()
+                .filter(new RequestLoggingFilter(getRequestLogger()))
                 .headers(headers.getHeaders())
                 .body(body)
                 .post(endpoint);
@@ -42,10 +45,35 @@ public class Requests {
     public Response patchRequest(String endpoint, String body){
         System.out.println("I am inside update request method");
         return given()
-                .log().all()
+                .log()
+                .all()
+                .filter(new RequestLoggingFilter(getRequestLogger()))
                 .headers(headers.getHeaders())
                 .body(body)
                 .when()
                 .patch(endpoint);
+    }
+
+    public Response deleteRequest(String endpoint){
+        System.out.println("I am inside delete request method");
+        return given()
+                .log()
+                .all()
+                .filter(new RequestLoggingFilter(getRequestLogger()))
+                .urlEncodingEnabled(false)
+                .headers(headers.getHeaders())
+                .delete(endpoint);
+    }
+
+    public Response putRequest(String endpoint, String body){
+        System.out.println("I am inside put request method");
+        return given()
+                .log()
+                .all()
+                .filter(new RequestLoggingFilter(getRequestLogger()))
+                .urlEncodingEnabled(false)
+                .headers(headers.getHeaders())
+                .body(body)
+                .put(endpoint);
     }
 }

@@ -1,4 +1,4 @@
-package payload;
+package payload.updateuserpayload;
 
 import lombok.Builder;
 import lombok.Setter;
