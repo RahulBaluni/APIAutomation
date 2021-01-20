@@ -67,7 +67,6 @@ public class UsersSpec extends BaseSpec{
     @Test
     @Tag("register_users")
     public void registerUserTest() {
-
         userssteps
                 .whenIRegisterUser("eve.holt@reqres.in","pistol");
     }
@@ -75,7 +74,6 @@ public class UsersSpec extends BaseSpec{
     @Test
     @Tag("unsuccessful_register_users")
     public void unsuccessfulRegisterUserTest() {
-
         userssteps
                 .whenUserRegistrationUnsuccessful("sydney@fife");
     }
