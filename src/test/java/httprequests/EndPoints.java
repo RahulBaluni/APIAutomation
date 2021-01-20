@@ -12,14 +12,22 @@ public class EndPoints {
                 .get("baseurl") + endpoints
                 .get("getUsers");
     }
+
     public static String createUsersEndpoint() {
         return endpoints
                 .get("baseurl") + endpoints
                 .get("createUser");
     }
+
     public static String updateUsersEndpoint() {
         return endpoints
                 .get("baseurl") + endpoints
                 .get("updateUser");
+    }
+
+    public static String getDelayedResponseEndpoint(String delay) {
+        return String.format(endpoints
+                .get("baseurl") + endpoints
+                .get("delayedResponseEndpoint"), delay);
     }
 }

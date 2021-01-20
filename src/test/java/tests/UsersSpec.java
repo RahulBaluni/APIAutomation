@@ -1,6 +1,5 @@
 package tests;
 
-import httprequests.EndPoints;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -37,5 +36,10 @@ public class UsersSpec extends BaseSpec{
     @Tag("create_users")
     public void createUserTest() {
         userssteps.whenICreateUser("Anmol", "QA Automation");
+    }
+
+    @Test
+    public void delayedResponseTest() {
+        userssteps.whenIRetrieveDelayedResponse("40");
     }
 }
