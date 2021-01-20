@@ -13,6 +13,7 @@ public class BaseSteps {
     Response response;
 
     protected void validateAndAttachResponse(String attachmentName, int statusCode) {
+        System.out.println(response.asString());
         Allure.addAttachment(attachmentName + "Request", requests.requestWriter.toString());
         Allure.addAttachment(attachmentName + "Response", response.asString());
         Assertions.assertEquals(statusCode, response.statusCode());

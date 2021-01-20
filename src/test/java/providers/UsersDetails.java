@@ -1,9 +1,12 @@
 package providers;
 
 import dto.createuser.CreateUserResponse;
+import dto.getusers.Data;
 import dto.getusers.GetUsersResponse;
 import dto.updateuser.UpdateUserResponse;
 import io.restassured.response.Response;
+
+import java.util.Optional;
 
 public class UsersDetails {
 
@@ -35,16 +38,21 @@ public class UsersDetails {
         return getUsersResponse.getPage();
     }
 
-    public String getEmail(){
-
+    /*public String getEmail(){
         return getUsersResponse
                 .getData()
                 .get(2)
                 .getEmail();
+    }*/
+
+    public String getEmail(String userName){
+        Optional<Data> name =  getUsersResponse.getData()
+                .stream()
+                .filter(d -> d.getFirst_name().equalsIgnoreCase(userName)).findAny();
+        return name.isPresent() ? name.get().getEmail() : "";
     }
 
     public String getJob(){
-
         return updateUserResponse
                 .getJob();
     }

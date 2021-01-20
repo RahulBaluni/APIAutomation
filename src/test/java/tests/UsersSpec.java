@@ -25,32 +25,35 @@ public class UsersSpec extends BaseSpec{
     @DisplayName("Get API Test")
     @Severity(SeverityLevel.CRITICAL)
     public void getUsersTest() {
-
         userssteps
                 .whenIRetrieveUsers()
-                .thenIVerifyUserEmail();
+                .thenIVerifyUserEmail("Charles", "charles.morris@reqres.com");
     }
 
     @Test
     @Tag("update_users")
     public void updateUserTest() {
         userssteps
-                .whenIUpdateUser("Rocky", "KillerAF").thenIVerifyJob().thenIVerifyName();
+                .whenIUpdateUser("Rocky", "KillerAF")
+                .thenIVerifyJob()
+                .thenIVerifyName();
     }
 
     @Test
     @Tag("created_users")
     public void createUserNameTest() {
         userssteps
-                .whenIUpdateUser("Anmol", "QA Automation").thenIVerifyCreatedName().thenIVerifyCreatedJob();
+                .whenIUpdateUser("Anmol", "QA Automation")
+                .thenIVerifyCreatedName()
+                .thenIVerifyCreatedJob();
     }
 
     @Test
     @Tag("create_users")
     public void createUserTest() throws IOException, ParseException {
-
         userssteps
-                .whenICreateUser("Anmol", "QA Automation").whenICreateUserDraft();
+                .whenICreateUser("Anmol", "QA Automation")
+                .whenICreateUserDraft();
     }
 
     @Test
@@ -101,7 +104,6 @@ public class UsersSpec extends BaseSpec{
     @Test
     @Tag("CreateUserDraft")
     public void createUserDraftTest() throws IOException, ParseException {
-
         userssteps
                 .whenICreateUserDraft();
     }
@@ -109,10 +111,8 @@ public class UsersSpec extends BaseSpec{
     @Test
     @Tag("Gmail_Users_Messages_Send")
     public void gmailUsersMessagesSendTest(){
-
         userssteps
                 .whenISendGmailUsersMessages();
-
     }
 
     @Test

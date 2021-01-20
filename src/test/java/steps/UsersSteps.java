@@ -26,8 +26,8 @@ public class UsersSteps extends BaseSteps{
     }
 
     @Step
-    public UsersSteps thenIVerifyUserEmail(){
-        Assertions.assertEquals("emma.wong@reqres.in", usersDetails.getEmail(), "Email doesn't match");
+    public UsersSteps thenIVerifyUserEmail(String userName, String email){
+        Assertions.assertEquals(email, usersDetails.getEmail(userName), "Email doesn't match");
         return this;
     }
 
